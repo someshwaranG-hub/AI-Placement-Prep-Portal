@@ -203,6 +203,21 @@ function setupEventListeners() {
             e.target.classList.add('active');
         });
     });
+
+    // Start Coding button — open first available problem in solver
+    const startBtn = document.querySelector('.welcome-section .btn.btn-primary');
+    if (startBtn) {
+        startBtn.addEventListener('click', () => {
+            if (typeof problemsData !== 'undefined' && problemsData && problemsData.length > 0) {
+                const firstProblem = problemsData[0];
+                showModal(`Start Coding: ${firstProblem.title}`, `${firstProblem.description}`, () => {
+                    window.location.href = `solver.html?id=${firstProblem.id}`;
+                });
+            } else {
+                showModal('No problems', 'No problems available yet.');
+            }
+        });
+    }
 }
 
 // ================================================
