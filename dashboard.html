@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - AI Placement Prep Portal</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <h1>🎯 AI Placement Prep Portal</h1>
+            </div>
+            <div class="navbar-menu">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#problems" class="nav-link">Problems</a>
+                <a href="#progress" class="nav-link">Progress</a>
+                <a href="#resources" class="nav-link">Resources</a>
+                <a href="#settings" class="nav-link">Settings</a>
+            </div>
+            <div class="navbar-user">
+                <span class="user-name" id="userName">User</span>
+                <button class="logout-btn" onclick="handleLogout()">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <h3>Languages</h3>
+                <ul class="language-list">
+                    <li class="lang-item" onclick="selectLanguage('python')">
+                        <span class="lang-icon">🐍</span>
+                        <span class="lang-name">Python</span>
+                    </li>
+                    <li class="lang-item" onclick="selectLanguage('java')">
+                        <span class="lang-icon">☕</span>
+                        <span class="lang-name">Java</span>
+                    </li>
+                    <li class="lang-item" onclick="selectLanguage('c')">
+                        <span class="lang-icon">©️</span>
+                        <span class="lang-name">C</span>
+                    </li>
+                    <li class="lang-item" onclick="selectLanguage('cpp')">
+                        <span class="lang-icon">➕</span>
+                        <span class="lang-name">C++</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Levels</h3>
+                <ul class="level-list">
+                    <li class="level-item" onclick="selectLevel('beginner')">
+                        <span class="level-badge beginner">🟢</span>
+                        <span>Beginner</span>
+                    </li>
+                    <li class="level-item" onclick="selectLevel('intermediate')">
+                        <span class="level-badge intermediate">🟡</span>
+                        <span>Intermediate</span>
+                    </li>
+                    <li class="level-item" onclick="selectLevel('advanced')">
+                        <span class="level-badge advanced">🔴</span>
+                        <span>Advanced</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Your Progress</h3>
+                <div class="progress-stats">
+                    <div class="stat">
+                        <span class="stat-value" id="problemsSolved">0</span>
+                        <span class="stat-label">Solved</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value" id="streakDays">0</span>
+                        <span class="stat-label">Day Streak</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Welcome Section -->
+            <section class="welcome-section">
+                <div class="welcome-header">
+                    <h2>Welcome, <span id="userDisplayName">User</span>! 👋</h2>
+                    <p>Ready to ace your placement interviews?</p>
+                </div>
+
+                <div class="today-summary">
+                    <div class="summary-card">
+                        <h3>Today's Challenge</h3>
+                        <p id="todayChallenge">Practice a new problem to build your skills</p>
+                        <button class="btn btn-primary">Start Coding</button>
+                    </div>
+                    <div class="summary-card">
+                        <h3>This Week</h3>
+                        <p id="weekStats">7 problems to solve</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div class="summary-card">
+                        <h3>Next Milestone</h3>
+                        <p id="milestone">10 problems solved</p>
+                        <button class="btn btn-secondary">View All Targets</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Problems Grid Section -->
+            <section class="problems-section">
+                <div class="section-header">
+                    <h3>Available Problems</h3>
+                    <div class="filters">
+                        <select id="languageFilter" onchange="filterProblems()">
+                            <option value="">All Languages</option>
+                            <option value="python">Python</option>
+                            <option value="java">Java</option>
+                            <option value="c">C</option>
+                            <option value="cpp">C++</option>
+                        </select>
+                        <select id="levelFilter" onchange="filterProblems()">
+                            <option value="">All Levels</option>
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="advanced">Advanced</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="problems-grid" id="problemsGrid">
+                    <!-- Problems will be loaded here -->
+                </div>
+            </section>
+
+            <!-- Stats Section -->
+            <section class="stats-section">
+                <h3>Your Performance</h3>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h4>Total Problems Solved</h4>
+                        <div class="stat-value large" id="totalSolved">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Accuracy Rate</h4>
+                        <div class="stat-value large" id="accuracyRate">0%</div>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Time Spent</h4>
+                        <div class="stat-value large" id="timeSpent">0h</div>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Current Level</h4>
+                        <div class="stat-value large" id="currentLevel">Beginner</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 AI Placement Prep Portal. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="#about">About</a>
+            <a href="#privacy">Privacy</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </footer>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
