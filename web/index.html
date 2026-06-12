@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Placement Prep Portal - Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Left Section - Brand Info -->
+        <div class="left-section">
+            <div class="brand-content">
+                <h1>🎯 AI Placement Prep Portal</h1>
+                <p class="subtitle">Master Coding Interviews with Daily Practice</p>
+                
+                <div class="features">
+                    <div class="feature">
+                        <span class="icon">📚</span>
+                        <h3>4 Languages</h3>
+                        <p>Python, Java, C, C++</p>
+                    </div>
+                    <div class="feature">
+                        <span class="icon">📈</span>
+                        <h3>3 Levels</h3>
+                        <p>Beginner to Advanced</p>
+                    </div>
+                    <div class="feature">
+                        <span class="icon">🚀</span>
+                        <h3>32+ Problems</h3>
+                        <p>Interview Ready</p>
+                    </div>
+                    <div class="feature">
+                        <span class="icon">✓</span>
+                        <h3>Track Progress</h3>
+                        <p>Daily Practice Log</p>
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <p>"Start your placement journey today. Consistent practice leads to success!"</p>
+                    <span>- AI Placement Prep Team</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Section - Login Form -->
+        <div class="right-section">
+            <div class="login-container">
+                <div class="login-header">
+                    <h2>Welcome Back</h2>
+                    <p>Sign in to your account</p>
+                </div>
+
+                <form id="loginForm" class="login-form">
+                    <!-- Full Name -->
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input 
+                            type="text" 
+                            id="fullName" 
+                            name="fullName" 
+                            placeholder="Enter your full name"
+                            required
+                        >
+                        <span class="error-message" id="nameError"></span>
+                    </div>
+
+                    <!-- College Name -->
+                    <div class="form-group">
+                        <label for="college">College Name</label>
+                        <input 
+                            type="text" 
+                            id="college" 
+                            name="college" 
+                            placeholder="Enter your college name"
+                            required
+                        >
+                        <span class="error-message" id="collegeError"></span>
+                    </div>
+
+                    <!-- Year of Study -->
+                    <div class="form-group">
+                        <label for="year">Year of Study</label>
+                        <select id="year" name="year" required>
+                            <option value="">Select your year</option>
+                            <option value="1st_year">1st Year</option>
+                            <option value="2nd_year">2nd Year</option>
+                            <option value="3rd_year">3rd Year</option>
+                            <option value="4th_year">4th Year</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <span class="error-message" id="yearError"></span>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="password-wrapper">
+                            <input 
+                                type="password" 
+                                id="password" 
+                                name="password" 
+                                placeholder="Enter your password"
+                                required
+                            >
+                            <button 
+                                type="button" 
+                                class="toggle-password" 
+                                onclick="togglePasswordVisibility()"
+                                tabindex="-1"
+                            >
+                                <span id="toggleIcon">👁️</span>
+                            </button>
+                        </div>
+                        <span class="error-message" id="passwordError"></span>
+                        <div class="password-strength">
+                            <div id="strengthBar" class="strength-bar"></div>
+                            <span id="strengthText" class="strength-text"></span>
+                        </div>
+                    </div>
+
+                    <!-- Remember Me & Forgot Password -->
+                    <div class="form-options">
+                        <label class="remember-me">
+                            <input type="checkbox" id="rememberMe" name="rememberMe">
+                            <span>Remember me</span>
+                        </label>
+                        <a href="#forgot-password" class="forgot-password">Forgot Password?</a>
+                    </div>
+
+                    <!-- Login Button -->
+                    <button type="submit" class="login-btn">
+                        <span>Sign In</span>
+                        <span class="btn-loader" id="btnLoader"></span>
+                    </button>
+
+                    <!-- Error Message -->
+                    <div class="form-error" id="formError"></div>
+
+                    <!-- Success Message -->
+                    <div class="form-success" id="formSuccess"></div>
+                </form>
+
+                <!-- Sign Up Link -->
+                <div class="signup-link">
+                    <p>Don't have an account? <a href="#signup">Sign up here</a></p>
+                </div>
+
+                <!-- Divider -->
+                <div class="divider">
+                    <span>OR</span>
+                </div>
+
+                <!-- Social Login -->
+                <div class="social-login">
+                    <button type="button" class="social-btn google-btn" onclick="handleGoogleLogin()">
+                        <span>🔵</span> Google
+                    </button>
+                    <button type="button" class="social-btn github-btn" onclick="handleGithubLogin()">
+                        <span>⚫</span> GitHub
+                    </button>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="login-footer">
+                <p>&copy; 2026 AI Placement Prep Portal. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
