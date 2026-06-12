@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Solver - AI Placement Prep</title>
+  <link rel="stylesheet" href="dashboard.css">
+  <style>
+    .solver-container { max-width:900px; margin:30px auto; padding:20px; }
+    .code-area { width:100%; height:300px; font-family: monospace; font-size:14px; padding:12px; }
+    .meta { color:#666; margin-bottom:12px; }
+  </style>
+</head>
+<body>
+  <nav class="navbar"><div class="navbar-container"><div class="navbar-brand"><h1>AI Placement Prep</h1></div></div></nav>
+  <div class="solver-container">
+    <h2 id="probTitle">Problem</h2>
+    <div class="meta" id="probMeta"></div>
+    <div id="probDesc" style="margin-bottom:14px;color:#444"></div>
+
+    <textarea id="codeEditor" class="code-area" placeholder="Write your solution here..."></textarea>
+
+    <div style="margin-top:12px;display:flex;gap:8px;justify-content:flex-end;">
+      <button id="runBtn" class="btn btn-secondary">Run (simulate)</button>
+      <button id="submitBtn" class="btn btn-primary">Submit & Mark Solved</button>
+    </div>
+    <div id="runOutput" style="margin-top:12px;background:#fafafa;padding:10px;border-radius:8px;color:#333;display:none"></div>
+  </div>
+
+  <script src="problemsData.js"></script>
+  <script src="solver.js"></script>
+</body>
+</html>
