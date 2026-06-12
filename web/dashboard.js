@@ -175,9 +175,9 @@ function selectLevel(level) {
 function solveProblem(problemId) {
     const problem = problemsData.find(p => p.id === problemId);
     if (problem) {
-        alert(`Opening ${problem.title}...\n\nLanguage: ${problem.language}\nDifficulty: ${problem.difficulty}`);
-        console.log('Redirecting to solver:', problem);
-        // In production: window.location.href = `solver.html?id=${problemId}`;
+        // Show in-page modal with problem summary and action
+        showModal(`Open: ${problem.title}`, `Language: ${problem.language}\nDifficulty: ${problem.difficulty}\n\n${problem.description}`);
+        console.log('Redirecting to solver (simulated):', problem);
     }
 }
 
@@ -188,9 +188,54 @@ function solveProblem(problemId) {
 function viewProblem(problemId) {
     const problem = problemsData.find(p => p.id === problemId);
     if (problem) {
-        alert(`Viewing ${problem.title}...\n\n${problem.description}`);
-        console.log('Viewing problem:', problem);
+        showModal(`View: ${problem.title}`, `${problem.description}`);
+        console.log('Viewing problem (modal):', problem);
     }
+}
+
+// ================================================
+// IN-PAGE MODAL
+// ================================================
+function ensureModal() {
+    if (document.getElementById('portalModal')) return;
+    const modal = document.createElement('div');
+    modal.id = 'portalModal';
+    modal.innerHTML = `
+        <div class="modal-overlay" id="modalOverlay"></div>
+        <div class="modal-content" id="modalContent">
+            <button class="modal-close" id="modalClose">×</button>
+            <h3 id="modalTitle"></h3>
+            <div id="modalBody" class="modal-body"></div>
+            <div class="modal-actions">
+                <button id="modalPrimary" class="btn btn-primary">Solve</button>
+                <button id="modalSecondary" class="btn btn-secondary">Close</button>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(modal);
+
+    document.getElementById('modalClose').addEventListener('click', closeModal);
+    document.getElementById('modalSecondary').addEventListener('click', closeModal);
+    document.getElementById('modalOverlay').addEventListener('click', closeModal);
+}
+
+function showModal(title, body, primaryCb) {
+    ensureModal();
+    document.getElementById('modalTitle').textContent = title;
+    const bodyEl = document.getElementById('modalBody');
+    // Preserve simple newlines
+    bodyEl.innerHTML = body.replace(/\n/g, '<br>');
+    const primaryBtn = document.getElementById('modalPrimary');
+    primaryBtn.onclick = () => {
+        if (typeof primaryCb === 'function') primaryCb();
+        closeModal();
+    };
+    document.getElementById('portalModal').classList.add('open');
+}
+
+function closeModal() {
+    const modal = document.getElementById('portalModal');
+    if (modal) modal.classList.remove('open');
 }
 
 // ================================================
