@@ -275,9 +275,9 @@ loginForm.addEventListener('submit', async (e) => {
                 }));
             }
 
-            // Redirect after 2 seconds
+            // Redirect after 2 seconds to pre-practice overview page
             setTimeout(() => {
-                window.location.href = 'dashboard.html';
+                window.location.href = 'prepractice.html';
             }, 2000);
         } else {
             showError(response.message || 'Login failed. Please try again.');

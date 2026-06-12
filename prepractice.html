@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pre-Practice — AI Placement Prep Portal</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <style>
+        .notes-list { display: grid; gap: 12px; }
+        .note-card { background:white; padding:14px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.05); }
+        .language-tabs { display:flex; gap:8px; margin-bottom:16px; }
+        .lang-btn { padding:8px 12px; border-radius:8px; border:1px solid #e0e0e0; cursor:pointer; background:white; }
+        .lang-btn.active { background:linear-gradient(135deg,#667eea,#764ba2); color:white; border-color:transparent; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-brand"><h1>🎯 AI Placement Prep Portal</h1></div>
+            <div class="navbar-user">
+                <span id="userName">User</span>
+                <button class="logout-btn" onclick="location.href='index.html'">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <main class="main-content" style="padding:30px;">
+            <section>
+                <h2>Before You Practice</h2>
+                <p>Choose a language to see which problems you can solve and read short notes available for each language.</p>
+            </section>
+
+            <section style="margin-top:18px;">
+                <div class="language-tabs" id="languageTabs"></div>
+                <div id="notesContainer" class="notes-list"></div>
+            </section>
+
+            <section style="margin-top:24px;">
+                <button class="btn btn-primary" id="proceedBtn">Proceed to Practice</button>
+            </section>
+        </main>
+    </div>
+
+    <script src="prepractice.js"></script>
+</body>
+</html>
